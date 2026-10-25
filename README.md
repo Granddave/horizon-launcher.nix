@@ -13,3 +13,7 @@ Update package with
 ```sh
 nix run .#update
 ```
+
+## License
+
+Licensed under MIT.
