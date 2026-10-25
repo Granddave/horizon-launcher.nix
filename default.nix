@@ -37,10 +37,10 @@ pkgs.stdenv.mkDerivation {
       --prefix LD_LIBRARY_PATH : "${
         pkgs.lib.makeLibraryPath [
           pkgs.alsa-lib
-          pkgs.wayland
-          pkgs.vulkan-loader
           pkgs.libxcb
           pkgs.libxkbcommon
+          pkgs.vulkan-loader
+          pkgs.wayland
         ]
       }"
   '';

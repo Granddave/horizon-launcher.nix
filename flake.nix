@@ -1,7 +1,7 @@
 {
   description = "Minecraft Horizon launcher wrapper";
   inputs = {
-    nixpkgs.url = "https://channels.nixos.org/nixpkgs-unstable/nixexprs.tar.zst";
+    nixpkgs.url = "https://channels.nixos.org/nixos-26.05/nixexprs.tar.zst";
   };
 
   outputs =
