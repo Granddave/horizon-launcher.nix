@@ -2,7 +2,7 @@
   pkgs ? import <nixpkgs> { },
 }:
 let
-  version = "0.2.6";
+  version = "0.2.7";
 in
 pkgs.stdenv.mkDerivation {
   pname = "horizon-launcher";
@@ -10,7 +10,7 @@ pkgs.stdenv.mkDerivation {
 
   src = pkgs.fetchurl {
     url = "https://github.com/ludovic111/horizon/releases/download/launcher%40${version}/horizon-launcher-linux-x86_64.tar.gz";
-    sha256 = "sha256-hyZdVB0V8f6JDRzPobaXz8Q6LK8UWgfLgJ+TiyX3nso=";
+    sha256 = "sha256-4GLGoG5eL03zd1wGSbCMtvxJfCOJUl0wf09bd7sGkCQ=";
   };
   sourceRoot = ".";
 
