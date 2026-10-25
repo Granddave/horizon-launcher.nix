@@ -14,5 +14,9 @@
       packages.${system}.default = import ./default.nix {
         inherit pkgs;
       };
+      apps.${system}.default = {
+        type = "app";
+        program = "${self.packages.${system}.default}/bin/horizon-launcher";
+      };
     };
 }

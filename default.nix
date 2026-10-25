@@ -1,12 +1,18 @@
 {
   pkgs ? import <nixpkgs> { },
 }:
+let
+  version = "0.2.6";
+in
 pkgs.stdenv.mkDerivation {
   pname = "horizon-launcher";
-  version = "0.2.6";
+  inherit version;
 
-  src = ./horizon-launcher;
-  dontUnpack = true;
+  src = pkgs.fetchurl {
+    url = "https://github.com/ludovic111/horizon/releases/download/launcher%40${version}/horizon-launcher-linux-x86_64.tar.gz";
+    sha256 = "sha256-hyZdVB0V8f6JDRzPobaXz8Q6LK8UWgfLgJ+TiyX3nso=";
+  };
+  sourceRoot = ".";
 
   nativeBuildInputs = [
     pkgs.autoPatchelfHook
@@ -22,7 +28,7 @@ pkgs.stdenv.mkDerivation {
   installPhase = ''
     runHook preInstall
     mkdir -p $out/bin
-    cp $src $out/bin/horizon-launcher
+    install -Dm755 horizon-launcher "$out/bin/horizon-launcher"
     runHook postInstall
   '';
 
