@@ -34,6 +34,8 @@ pkgs.stdenv.mkDerivation {
 
   postFixup = ''
     wrapProgram "$out/bin/horizon-launcher" \
+      --set NIX_LD "${pkgs.glibc}/lib/ld-linux-x86-64.so.2" \
+      --prefix NIX_LD_LIBRARY_PATH : "${pkgs.lib.makeLibraryPath [ pkgs.glibc ]}" \
       --prefix LD_LIBRARY_PATH : "${
         pkgs.lib.makeLibraryPath [
           pkgs.alsa-lib
