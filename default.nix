@@ -39,6 +39,7 @@ pkgs.stdenv.mkDerivation {
           pkgs.alsa-lib
           pkgs.libxcb
           pkgs.libxkbcommon
+          pkgs.systemdLibs
           pkgs.vulkan-loader
           pkgs.wayland
         ]
