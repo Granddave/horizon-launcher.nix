@@ -35,6 +35,10 @@ pkgs.buildFHSEnv {
 
   targetPkgs = pkgs: with pkgs; [
     alsa-lib
+    libX11
+    libXcursor
+    libXi
+    libXrandr
     libxcb
     libxkbcommon
     systemdLibs
