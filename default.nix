@@ -36,6 +36,7 @@ pkgs.buildFHSEnv {
   targetPkgs = pkgs: with pkgs; [
     alsa-lib
     alsa-plugins
+    jdk25
     libX11
     libXcursor
     libXi
