@@ -1,0 +1,28 @@
+name: Update Horizon launcher
+
+on:
+  schedule:
+    - cron: "0 6 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  update-package:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: DeterminateSystems/nix-installer-action@v17
+      - name: Update package version
+        run: nix run .#update
+      - name: Open pull request
+        uses: peter-evans/create-pull-request@v7
+        with:
+          branch: update-horizon-launcher
+          delete-branch: true
+          title: "chore: update Horizon launcher"
+          commit-message: "chore: update Horizon launcher version"
+          body: "Updates the Horizon launcher package version and source hash."
+          labels: dependencies
