@@ -2,14 +2,14 @@
   pkgs ? import <nixpkgs> { },
 }:
 let
-  version = "0.2.61";
+  version = "0.2.64";
   launcher = pkgs.stdenv.mkDerivation {
     pname = "horizon-launcher-unwrapped";
     inherit version;
 
     src = pkgs.fetchurl {
       url = "https://github.com/ludovic111/horizon/releases/download/launcher%40${version}/horizon-launcher-linux-x86_64.tar.gz";
-      sha256 = "sha256-tfbihG3dGgdmfHF1Dq2V5Xy/sheAW9LAgrGy8K29YkA=";
+      sha256 = "sha256-I84jHrE79CA+qZB2tUC5NZbH32cAXlQp7LuqJSRb7mc=";
     };
     sourceRoot = ".";
 
