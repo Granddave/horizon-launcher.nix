@@ -47,6 +47,16 @@ pkgs.buildFHSEnv {
     vulkan-loader
     wayland
   ];
+  # Root-owned ancestors appear as UID 65534 in Bubblewrap's user namespace.
+  # Horizon rejects those for control sockets, so expose the runtime directory
+  # directly under the user-owned FHS root. Keep its existing desktop sockets.
+  extraBwrapArgs = [
+    "--perms 0700 --tmpfs /horizon-runtime"
+    ''--bind-try "''${XDG_RUNTIME_DIR:-/run/user/$(${pkgs.coreutils}/bin/id -u)}" /horizon-runtime''
+  ];
+  profile = ''
+    export XDG_RUNTIME_DIR=/horizon-runtime
+  '';
   runScript = "${launcher}/bin/horizon-launcher";
 
   passthru = {
